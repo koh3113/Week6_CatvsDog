@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = "bg-text">
+    <div id="main" class="d-flex flex-column justify-content-center align-items-center mt-5 mb-5" style="height: auto; color: white;">
+        <img id="img" src="../static/images/{{img}}" width="400px">
+        <h1 id="result">Prediction: {{predict}}</h1>
+        <div class="d-flex justify-content-around">
+            <button id ="True" class="btn btn-success" style="margin-right: 10px;"><a href="/" style="color:white">True</a></button>
+            <button class="btn btn-danger" id='False'><a href="/" style="color:white">False</a></button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<a href="">True</a>

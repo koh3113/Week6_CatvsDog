@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- CSS -->
+    <link href="../static/css/style.css" rel="stylesheet">
+</head>
+  <body class="text-center">
+    {% include "navibar.html" %}
+    {% block content%} {% endblock %} 
+    <div class = "bg-image" style="background-image"></div>
+    <script src="static/js/jquery-3.4.1.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <!-- AJAX optional -->
+    <script type="text/javascript">
+      $("#False").click(function(){
+          var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+          var predict = document.getElementById("result").textContent.split(" ")[1];
+          var img = document.getElementById("img").src.split("/").slice(-1)[0];
+          var datastr = img + " " + predict
+          $.ajax({
+              type: "POST",
+              url: $SCRIPT_ROOT + "/uploader",
+              contentType: "application/json",
+              data: JSON.stringify(datastr),
+              success: function(){
+                  console.log("");
+              }
+          });
+      });
+
+      $('#True').click(function(){
+        var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+        var int = '1';
+        var img = document.getElementById("img").src.split("/").slice(-1)[0];
+        var datastr = img + " " + int
+        $.ajax({
+          type: "POST",
+          url: $SCRIPT_ROOT + "/uploader",
+          contentType: "application/json",
+          data: JSON.stringify(datastr),
+          success: function(){
+              console.log("");
+          }
+        });
+      })
+  </script>
+  </body>
+</html>

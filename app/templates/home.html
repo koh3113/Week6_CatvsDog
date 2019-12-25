@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %}
+  <div class="bg-text">
+      <div id = "main" style="margin-top: 0" class="d-flex flex-column justify-content-center align-items-center">
+        <img class="mb-4" src="static/images/coderschool-logo.png" alt="" />
+        <h1 class="h3 mb-3 font-weight-normal">Please upload your picture</h1>
+        <img id="blah" name='img' src="#" alt="your image" style ='display:none' style="width: 400px !important;"/>
+        <form 
+        class="d-flex flex-column justify-content-center align-items-center"
+        action = "{{url_for('upload_api.upload_file')}}" method = "POST" enctype = "multipart/form-data">
+          <input type='file' name = 'file' onchange="readURL(this);" style="margin: 20px;" />
+          <input id="myButton" class="btn btn-lg btn-primary btn-block" type = "submit" value="Predict" style="width: 40vw;"/>
+          </form>
+      
+        <p class="mt-5 mb-3 text-muted" style="color: #2911ad; font-size: 20px;">&copy; Mariana 2019</p>
+      </div>
+
+  </div>
+{% endblock %}
